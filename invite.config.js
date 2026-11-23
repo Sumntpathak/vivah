@@ -59,6 +59,7 @@ window.INVITE = {
      mapQuery is searched on Google Maps. For an exact pin, add lat/lng instead. */
   reception: {
     label: "स्वागत समारोह",
+    event: "तिलकोत्सव एवं प्रीतिभोज",
     name: "बी.एन. कॉन्वेंट स्कूल",
     address: "वाड्रफनगर, जिला-बलरामपुर (छ.ग.)",
     date: "2026-12-06", time: "सायं 7.00 बजे से",
@@ -106,7 +107,7 @@ window.INVITE = {
     gateBtn: "निमंत्रण खोलें",
     gateLines: [{ d: "06 दिसम्बर", t: "मुख्य प्रीतिभोज · वाड्रफनगर", main: true }],
     mqWeds: "weds", mqTail: "9 December Wedding",      // running line: सुमन्त weds निकिता · 9 December Wedding
-    shareMain: "मुख्य प्रीतिभोज",
+    shareOpen: "👇 निमंत्रण पत्रिका",
     ctaRsvp: "आगमन बताएँ",
     doha:    "विघ्न हरण मंगल करण, गौरी पुत्र गणेश।\nप्रथम निमंत्रण आपको, ब्रह्मा, विष्णु, महेश॥",
     navEvents: "कार्यक्रम", navVenue: "स्थल", navFamily: "परिजन", navRsvp: "आगमन",
