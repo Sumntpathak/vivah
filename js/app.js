@@ -220,14 +220,14 @@
   /* ---------------- links ---------------- */
   const evOf = k => I.events.find(e => e.key === k), dl = d => { const p = dparts(d); return p.d + " " + p.m + " " + p.y + ", " + p.wd; };
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
+  const dm = d => { const p = dparts(d); return p.d + " " + p.m; };
   const shareMsg = [
-    "🙏 *" + H.familyName + " का स्नेहिल निमंत्रण* 🙏", "",
-    "💛 *शुभ विवाह*", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
-    C.shareStory || "", "",
-    C.shareOpen || "", location.href.split("#")[0], "",   // website first: WhatsApp builds the card from the first link
-    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 " + dl(R.date) + " · " + R.time, "📍 " + R.name + ", " + R.address.split(",")[0], "🗺️ " + mapUrl(R).replace(/%2C/g, "").replace(/%20/g, "+"), ""] : []),
-    ...(bar ? ["🐎 बारात: " + dparts(bar.date).d + " " + dparts(bar.date).m + (bar.time ? ", " + bar.time : ""), ""] : []),
-    C.shareLine || ""
+    "🙏 *" + H.familyName + " का निमंत्रण* 🙏",
+    "💛 *शुभ विवाह* — *" + G.name + " " + C.sang + " " + B.name + "*", "",
+    location.href.split("#")[0], "",   // website first: WhatsApp builds the card from the first link
+    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*: " + dm(R.date) + ", " + dparts(R.date).wd + ", " + R.time, "📍 " + R.name + ", " + R.address.split(",")[0],
+             "🗺️ https://maps.google.com/?q=" + encodeURIComponent(R.mapQuery.split(",").slice(0, 2).map(s => s.trim()).join(" ")).replace(/%20/g, "+")] : []),
+    ...(bar ? ["🐎 बारात: " + dm(bar.date)] : [])
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
