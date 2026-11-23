@@ -1,0 +1,23 @@
+/* Theme: haldi yellow. Change colours and fonts here only. */
+@font-face{font-family:"Poppins";src:url(../assets/fonts/poppins-light.woff) format("woff");font-weight:300;font-display:swap}
+@font-face{font-family:"Poppins";src:url(../assets/fonts/poppins-medium.woff) format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Poppins";src:url(../assets/fonts/poppins-bold.woff) format("woff");font-weight:700;font-display:swap}
+
+:root{
+  /* five shades of haldi, light to deep */
+  --y-pale:#FFF4CC;
+  --y-light:#FFE27A;
+  --y:#FFCB2F;
+  --y-deep:#F7B300;
+  --amber:#EE9B00;
+
+  --ink:#2A0B05;          /* all text */
+  --ink-soft:#5A2A0E;
+  --line:rgba(42,11,5,.16);
+
+  --font:"Poppins","Noto Sans Devanagari","Nirmala UI","Mangal",system-ui,sans-serif;
+
+  --g:clamp(20px,5.5vw,64px);          /* side gutter */
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
