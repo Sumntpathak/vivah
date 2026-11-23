@@ -254,6 +254,16 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .stepper button{width:52px;height:52px;border-radius:50%;border:0;background:rgba(42,11,5,.08);font:inherit;font-size:24px;color:var(--ink);cursor:pointer}
 .stepper output{font-size:44px;font-weight:300;min-width:1.4em;text-align:center;font-variant-numeric:tabular-nums}
 
+/* ---------------- footer: pratibhoj with kalash ---------------- */
+.pfoot{background:var(--ink);color:var(--y);padding:46px var(--g) calc(46px + env(safe-area-inset-bottom));text-align:center}
+.pf-in{display:flex;align-items:center;justify-content:center;gap:clamp(14px,5vw,40px);max-width:640px;margin:0 auto}
+.kalash{flex:none;width:clamp(46px,13vw,84px);aspect-ratio:71/87;background:var(--y);
+  -webkit-mask:url(../assets/img/kalash.png) center/contain no-repeat;mask:url(../assets/img/kalash.png) center/contain no-repeat}
+.pf-lab{font-size:14px;font-weight:500;letter-spacing:.05em;color:var(--y-light)}
+.pf-date{font-size:clamp(24px,7vw,46px);font-weight:700;line-height:1.15;margin:4px 0;white-space:nowrap}
+.pf-meta{font-size:14px;color:var(--y-pale)}
+.pf-place{font-size:13px;color:var(--y-pale);opacity:.8;margin-top:2px}
+
 /* ---------------- floating buttons ---------------- */
 .fab-rsvp{position:fixed;z-index:80;bottom:calc(env(safe-area-inset-bottom) + 16px);border:0;cursor:pointer;
   background:var(--ink);color:var(--y);opacity:0;transform:translateY(20px);pointer-events:none;transition:opacity .5s,transform .5s var(--ease);

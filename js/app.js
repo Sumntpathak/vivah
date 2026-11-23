@@ -210,11 +210,25 @@
       </form></div></section>`;
   }
 
+  // footer: the main pratibhoj (6 Dec) framed by two kalash from the printed card
+  function foot() {
+    const R = I.reception; if (!R) return "";
+    const p = dparts(R.date);
+    return `<footer class="pfoot" id="ant" data-bg="#2A0B05"><div class="pf-in">
+      <span class="kalash" aria-hidden="true"></span>
+      <div class="pf-txt"><p class="pf-lab">${esc(C.shareMain || R.event)}</p>
+        <p class="pf-date">${Number(p.d)} ${p.m} ${p.y}</p>
+        <p class="pf-meta">${p.wd} · ${esc(R.time)}</p>
+        <p class="pf-place">${esc(R.name)}, ${esc(R.address.split(",")[0])}</p></div>
+      <span class="kalash" aria-hidden="true"></span>
+    </div></footer>`;
+  }
+
   /* ---------------- build ---------------- */
   document.documentElement.classList.add("js");
   document.title = I.pageTitle || document.title;
   document.body.insertAdjacentHTML("afterbegin", reduce ? "" : intro());
-  $("#app").innerHTML = hero() + letter() + duo() + events() + countdown() + marquee() + venue() + family() + rsvp();
+  $("#app").innerHTML = hero() + letter() + duo() + events() + countdown() + marquee() + venue() + family() + rsvp() + foot();
   $("#fabRsvp").textContent = C.ctaRsvp;
 
   /* ---------------- links ---------------- */
@@ -226,9 +240,7 @@
     "*" + C.mantra + "*", "",
     C.salute, "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "* " + (C.shareKe || C.ke), "",
     C.shareOpen || "", location.href.split("#")[0], "",   // website sits in the invitation text; first link = WhatsApp card
-    ...(R ? ["*" + (C.shareMain || R.event) + "*: " + cs(R.date) + ", " + R.time] : []),
-    ...(bar && viv ? ["*" + (C.shareBar || bar.name) + "*: " + cs(bar.date)] : []),
-    ...(I.balManuhar && I.balManuhar.line ? ["", "*" + C.balTitle + "*: " + I.balManuhar.line] : [])
+    ...(R ? ["*" + (C.shareMain || R.event) + "*: " + cs(R.date) + ", " + R.time] : [])
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
