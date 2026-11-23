@@ -203,9 +203,6 @@
       <p class="eyebrow">${esc(C.navRsvp)}</p><h2 class="h-big" style="margin-bottom:0">${esc(C.rsvpTitle)}</h2>
       <form class="form" id="rsvpForm" autocomplete="on">
         <div class="field"><label for="gname">${esc(C.rsvpName)}</label><input type="text" id="gname" name="name" placeholder="—"></div>
-        <div class="field"><span class="lab">${esc(C.rsvpTitle)}</span><div class="choice">
-          <input type="radio" name="att" id="attY" value="yes" checked><label for="attY">${esc(C.rsvpYes)}</label>
-          <input type="radio" name="att" id="attN" value="no"><label for="attN">${esc(C.rsvpNo)}</label></div></div>
         <div class="field" id="gbox"><span class="lab">${esc(C.rsvpGuests)}</span><div class="stepper">
           <button type="button" id="gminus" aria-label="कम">−</button><output id="gcount">1</output><button type="button" id="gplus" aria-label="अधिक">+</button></div></div>
         <div class="btns"><a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">${esc(C.rsvpBtn)}</a>
@@ -234,13 +231,12 @@
   const evOf = k => I.events.find(e => e.key === k), dl = d => { const p = dparts(d); return p.d + " " + p.m + " " + p.y + ", " + p.wd; };
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
   const shareMsg = [
-    "🙏 *" + C.mantra + "* 🙏", "",
-    "💛 *शुभ विवाह निमंत्रण* 💛", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
-    C.salute + " 🙏", C.shareIntro || "", "",
-    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 *" + dl(R.date) + "*", "🕖 " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
-    ...(bar ? ["🐎 *" + bar.name + "*", "📅 " + dl(bar.date) + (bar.time ? " · " + bar.time : ""), "📍 " + V.name + ", " + V.address, ...(viv ? ["🌼 " + viv.name + " · " + viv.time] : []), ""] : []),
+    "🙏 *" + H.familyName + " का स्नेहिल निमंत्रण* 🙏", "",
+    "💛 *शुभ विवाह* 💛", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
     C.shareOpen || "", location.href.split("#")[0], "",
-    "स्वागतोत्सुक: *" + H.familyName + "*, " + H.place
+    ...(R ? ["✨ *" + (C.shareMain || R.label) + "* — " + dl(R.date) + ", " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
+    ...(bar ? ["🐎 *" + bar.name + "* — " + dl(bar.date) + (bar.time ? ", " + bar.time : ""), "📍 " + V.name + ", " + V.address, ""] : []),
+    C.shareLine || "", "— " + H.familyName + ", " + H.place
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
@@ -248,11 +244,7 @@
   let guests = 1;
   function rsvpLink() {
     const name = $("#gname").value.trim() || "एक अतिथि";
-    const yes = $("input[name=att]:checked").value === "yes";
-    $("#gbox").style.display = yes ? "" : "none";
-    const msg = yes
-      ? "नमस्ते 🙏 " + name + " सपरिवार (" + guests + " लोग) " + G.name + " " + C.sang + " " + B.name + " के शुभ विवाह में सहर्ष पधारेंगे।"
-      : "नमस्ते 🙏 " + name + " क्षमाप्रार्थी हैं। हमारी ओर से नव दम्पत्ति को शुभ आशीर्वाद।";
+    const msg = "नमस्ते 🙏 " + name + " सपरिवार (" + guests + " लोग) " + G.name + " " + C.sang + " " + B.name + " के शुभ विवाह में सहर्ष पधारेंगे।";
     $("#waBtn").href = "https://wa.me/" + (I.rsvpPhone || "") + "?text=" + encodeURIComponent(msg);
   }
   $("#gminus").onclick = () => { guests = Math.max(1, guests - 1); $("#gcount").textContent = guests; rsvpLink(); };
