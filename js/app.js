@@ -205,8 +205,8 @@
         <div class="field"><label for="gname">${esc(C.rsvpName)}</label><input type="text" id="gname" name="name" placeholder="—"></div>
         <div class="field" id="gbox"><span class="lab">${esc(C.rsvpGuests)}</span><div class="stepper">
           <button type="button" id="gminus" aria-label="कम">−</button><output id="gcount">1</output><button type="button" id="gplus" aria-label="अधिक">+</button></div></div>
-        <div class="btns"><a class="btn" id="waBtn" href="#" target="_blank" rel="noopener">${esc(C.rsvpBtn)}</a>
-          <a class="btn ghost" id="shareBtn" href="#" target="_blank" rel="noopener">${esc(C.shareBtn)}</a></div>
+        <div class="btns"><a class="btn" id="shareBtn" href="#" target="_blank" rel="noopener">${esc(C.shareBtn)}</a>
+          <a class="btn ghost" id="waBtn" href="#" target="_blank" rel="noopener">${esc(C.rsvpBtn)}</a></div>
       </form></div></section>`;
   }
 
@@ -234,7 +234,7 @@
   let guests = 1;
   function rsvpLink() {
     const name = $("#gname").value.trim() || "एक अतिथि";
-    const msg = "नमस्ते 🙏 " + name + " सपरिवार (" + guests + " लोग) " + G.name + " " + C.sang + " " + B.name + " के शुभ विवाह में सहर्ष पधारेंगे।";
+    const msg = "नमस्ते 🙏 " + name + " सपरिवार (" + guests + " लोग) " + G.name + " " + C.sang + " " + B.name + " के शुभ विवाह में सहर्ष पधारेंगे।\n\n" + (C.shareOpen || "") + "\n" + location.href.split("#")[0];
     $("#waBtn").href = "https://wa.me/" + (I.rsvpPhone || "") + "?text=" + encodeURIComponent(msg);
   }
   $("#gminus").onclick = () => { guests = Math.max(1, guests - 1); $("#gcount").textContent = guests; rsvpLink(); };

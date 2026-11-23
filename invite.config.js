@@ -134,8 +134,8 @@ window.INVITE = {
     rsvpTitle: "आगमन की सूचना",
     rsvpName: "आपका नाम",
     rsvpGuests: "कितने लोग पधारेंगे",
-    rsvpBtn: "व्हाट्सऐप पर बताइए",
-    shareBtn: "निमंत्रण आगे भेजें",
+    rsvpBtn: "आने की सूचना भेजें",
+    shareBtn: "निमंत्रण व्हाट्सऐप पर भेजें",
     soundOn: "भजन चालू", soundOff: "भजन बंद"
   }
 };
