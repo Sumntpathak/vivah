@@ -222,11 +222,12 @@
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
   const shareMsg = [
     "🙏 *" + H.familyName + " का स्नेहिल निमंत्रण* 🙏", "",
-    "💛 *शुभ विवाह* — *" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
-    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 " + dl(R.date) + " · " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
-    ...(bar ? ["🐎 बारात: " + dl(bar.date) + (bar.time ? " · " + bar.time : ""), ""] : []),
-    C.shareLine || "", "",
-    C.shareOpen || "", location.href.split("#")[0]
+    "💛 *शुभ विवाह*", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
+    C.shareStory || "", "",
+    C.shareOpen || "", location.href.split("#")[0], "",   // website first: WhatsApp builds the card from the first link
+    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 " + dl(R.date) + " · " + R.time, "📍 " + R.name + ", " + R.address.split(",")[0], "🗺️ " + mapUrl(R).replace(/%2C/g, "").replace(/%20/g, "+"), ""] : []),
+    ...(bar ? ["🐎 बारात: " + dparts(bar.date).d + " " + dparts(bar.date).m + (bar.time ? ", " + bar.time : ""), ""] : []),
+    C.shareLine || ""
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
