@@ -22,15 +22,15 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:85;pointer-events:none}
 .progress i{display:block;height:100%;background:var(--ink);transform-origin:0 50%;transform:scaleX(0)}
 
-#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:70}
+#petals{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:110}
 
 /* ---------------- intro ---------------- */
 .intro{position:fixed;inset:0;z-index:100;background:var(--ink);color:var(--y);display:grid;place-items:center;text-align:center;
   clip-path:circle(150% at 50% 46%);transition:clip-path 1.25s cubic-bezier(.77,0,.18,1);cursor:pointer;padding:24px}
 .intro.open{clip-path:circle(0% at 50% 46%)}
 .intro.gone{display:none}
-.intro-in{display:flex;flex-direction:column;align-items:center;gap:22px}
-.orb{width:min(58vw,300px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
+.intro-in{display:flex;flex-direction:column;align-items:center;gap:18px}
+.orb{width:min(44vw,230px);aspect-ratio:1;border-radius:50%;display:grid;place-items:center;
   background:radial-gradient(circle at 38% 32%,#FFF1B0 0,#FFCB2F 38%,#EE9B00 72%);
   box-shadow:0 0 90px 20px rgba(255,203,47,.35),inset -14px -20px 40px rgba(170,80,0,.35);animation:breathe 3.2s ease-in-out infinite}
 .orb span{font-size:min(30vw,150px);font-weight:700;color:var(--ink);line-height:1;transform:translateY(4%)}
@@ -39,9 +39,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .intro .i-names{font-size:clamp(30px,8.5vw,54px);font-weight:700;line-height:1.1}
 .intro .i-names em{font-style:normal;font-weight:300;font-size:.55em;margin:0 .35em;opacity:.8}
 .intro .i-date{font-size:14px;font-weight:300;letter-spacing:.04em;opacity:.85}
-.i-btn{display:flex;flex-direction:column;align-items:center;gap:2px}
-.i-btn small{font-size:12px;font-weight:400;line-height:1.5;opacity:.85;max-width:100%}
-.i-btn{margin-top:6px;font:inherit;font-size:15px;font-weight:500;color:var(--ink);background:var(--y);border:0;border-radius:999px;padding:14px 28px;cursor:pointer;
+.i-card{width:min(86vw,340px);display:grid;gap:6px;padding:8px;border-radius:20px;background:rgba(255,203,47,.07);border:1px solid rgba(255,203,47,.3)}
+.i-row{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;text-align:left;margin:0;padding:10px 14px;border-radius:14px;color:var(--y-pale);font-size:13.5px;line-height:1.35}
+.i-row b{font-size:17px;font-weight:700;color:var(--y);white-space:nowrap}
+.i-row.main{background:var(--y);color:var(--ink);font-weight:500}
+.i-row.main b{color:var(--ink)}
+.i-btn{margin-top:4px;font:inherit;font-size:16px;font-weight:700;box-shadow:0 8px 28px rgba(255,203,47,.32);color:var(--ink);background:var(--y);border:0;border-radius:999px;padding:15px 38px;cursor:pointer;
   animation:nudge 2s var(--ease) infinite}
 @keyframes nudge{0%,100%{transform:none}50%{transform:translateY(-4px)}}
 
@@ -191,6 +194,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .mq-row{will-change:transform}
 .mq-in{display:flex;width:max-content;animation:mq 26s linear infinite;font-size:clamp(30px,8vw,76px);font-weight:700;line-height:1.15;white-space:nowrap}
 .mq-in span{padding-right:.6em}
+.mq-in .dot{color:var(--y-deep);opacity:.8}
 .mq-in em{font-style:normal;color:transparent;-webkit-text-stroke:1.2px var(--y)}
 @keyframes mq{to{transform:translateX(-50%)}}
 

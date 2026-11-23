@@ -29,8 +29,8 @@
       <p class="i-mantra">${esc(C.mantra)}</p>
       <div class="orb" aria-hidden="true"><span>ॐ</span></div>
       <p class="i-names">${esc(G.name)}<em>${esc(C.sang)}</em>${esc(B.name)}</p>
-      <p class="i-date">${md.d} ${md.m} ${md.y} · ${md.wd}</p>
-      <button type="button" class="i-btn" id="openBtn"><span>${esc(C.gateBtn)}</span>${(C.gateLines || []).map(l => `<small>${esc(l)}</small>`).join("")}</button>
+      ${(C.gateLines || []).length ? `<div class="i-card">${C.gateLines.map(l => `<p class="i-row${l.main ? " main" : ""}"><b>${esc(l.d)}</b><span>${esc(l.t)}</span></p>`).join("")}</div>` : `<p class="i-date">${md.d} ${md.m} ${md.y} · ${md.wd}</p>`}
+      <button type="button" class="i-btn" id="openBtn">${esc(C.gateBtn)}</button>
     </div></div>`;
   }
 
@@ -134,7 +134,7 @@
   }
 
   function marquee() {
-    const one = `<span>${esc((I.reception || V).name)}</span><span><em>${esc(G.name)}</em></span><span>${md.d} ${md.m}</span><span><em>${esc(B.name)}</em></span>`;
+    const one = `<span>${esc(G.name)}</span><span><em>${esc(C.mqWeds || "weds")}</em></span><span>${esc(B.name)}</span>${C.mqTail ? `<span>${esc(C.mqTail)}</span><span class="dot">•</span>` : ""}`;
     return `<div class="marquee" aria-hidden="true"><div class="mq-row" id="mq"><div class="mq-in">${one.repeat(4)}</div></div></div>`;
   }
 
@@ -231,10 +231,18 @@
   $("#fabRsvp").textContent = C.ctaRsvp;
 
   /* ---------------- links ---------------- */
-  const place = I.reception ? I.reception.name + ", " + I.reception.address : V.name + ", " + V.address;
-  $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(
-    "🙏 " + H.familyName + " का स्नेहिल निमंत्रण 🙏\n\n" + G.name + " " + C.sang + " " + B.name + "\n" +
-    md.d + " " + md.m + " " + md.y + ", " + md.wd + "\n" + place + "\n\n" + location.href.split("#")[0]);
+  const evOf = k => I.events.find(e => e.key === k), dl = d => { const p = dparts(d); return p.d + " " + p.m + " " + p.y + ", " + p.wd; };
+  const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
+  const shareMsg = [
+    "🙏 *" + C.mantra + "* 🙏", "",
+    "💛 *शुभ विवाह निमंत्रण* 💛", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
+    C.salute + " 🙏", C.shareIntro || "", "",
+    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 *" + dl(R.date) + "*", "🕖 " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
+    ...(bar ? ["🐎 *" + bar.name + "*", "📅 " + dl(bar.date) + (bar.time ? " · " + bar.time : ""), "📍 " + V.name + ", " + V.address, ...(viv ? ["🌼 " + viv.name + " · " + viv.time] : []), ""] : []),
+    C.shareOpen || "", location.href.split("#")[0], "",
+    "स्वागतोत्सुक: *" + H.familyName + "*, " + H.place
+  ].join("\n");
+  $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
   /* ---------------- RSVP ---------------- */
   let guests = 1;
@@ -274,7 +282,7 @@
   const petal = top => ({ x: Math.random() * W, y: top ? -20 - Math.random() * Hh * .7 : Math.random() * Hh, vy: .5 + Math.random() * 1.3,
     sw: Math.random() * 6.28, sp: .015 + Math.random() * .03, r: Math.random() * 6.28, vr: (Math.random() - .5) * .06, s: 5 + Math.random() * 6,
     c: COLS[(Math.random() * COLS.length) | 0] });
-  function burst(n) { if (!reduce) for (let i = 0; i < n; i++) parts.push(Object.assign(petal(true), { vy: 1.4 + Math.random() * 2 })); }
+  function burst(n) { if (!reduce) for (let i = 0; i < n; i++) parts.push(Object.assign(petal(true), { vy: 2.2 + Math.random() * 2.6, y: -20 - Math.random() * Hh * .45, s: 7 + Math.random() * 8 })); }
   let ambient = 0;
   function drawPetals() {
     cx.setTransform(dpr, 0, 0, dpr, 0, 0); cx.clearRect(0, 0, W, Hh);
@@ -305,7 +313,8 @@
     if (byTap) play();
     introEl.classList.add("open");
     document.body.classList.remove("locked");
-    setTimeout(() => { document.documentElement.classList.add("ready"); burst(120); ambient = innerWidth < 700 ? 12 : 20; }, 350 * (RENDER ? 6.7 : 1));
+    burst(190);   // flowers start pouring the moment the gate is tapped
+    setTimeout(() => { document.documentElement.classList.add("ready"); burst(90); ambient = innerWidth < 700 ? 12 : 20; }, 350 * (RENDER ? 6.7 : 1));
     setTimeout(() => { introEl.classList.add("gone"); measure(); }, 1300 * (RENDER ? 6.7 : 1));
   }
   if (reduce) document.documentElement.classList.add("ready");
