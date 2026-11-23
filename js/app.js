@@ -210,21 +210,11 @@
       </form></div></section>`;
   }
 
-  function foot() {
-    return `<footer class="foot" id="ant" data-bg="#EE9B00"><div class="wrap">
-      <p class="eyebrow">${esc(G.name)} · ${esc(B.name)}</p>
-      <p class="f-title">${esc(C.footTitle)}</p>
-      <p class="f-fam">${esc(H.familyName)}</p><p class="f-place">${esc(H.place)}</p>
-      <p class="f-note">${esc(C.footNote)}</p>
-      <nav class="f-links" aria-label="${esc(C.quickTitle)}"><a href="#karyakram">${esc(C.navEvents)}</a><a href="#sthal">${esc(C.navVenue)}</a><a href="#parijan">${esc(C.navFamily)}</a><a href="#rsvp">${esc(C.navRsvp)}</a></nav>
-    </div><div class="f-end" aria-hidden="true"><img class="f-couple" src="${img(I.images.couple)}" alt="" loading="lazy"><p class="f-big">${esc(C.footEnd.replace(/॥/g, "").trim())}</p></div></footer>`;
-  }
-
   /* ---------------- build ---------------- */
   document.documentElement.classList.add("js");
   document.title = I.pageTitle || document.title;
   document.body.insertAdjacentHTML("afterbegin", reduce ? "" : intro());
-  $("#app").innerHTML = hero() + letter() + duo() + events() + countdown() + marquee() + venue() + family() + rsvp() + foot();
+  $("#app").innerHTML = hero() + letter() + duo() + events() + countdown() + marquee() + venue() + family() + rsvp();
   $("#fabRsvp").textContent = C.ctaRsvp;
 
   /* ---------------- links ---------------- */
@@ -232,11 +222,11 @@
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
   const shareMsg = [
     "🙏 *" + H.familyName + " का स्नेहिल निमंत्रण* 🙏", "",
-    "💛 *शुभ विवाह* 💛", "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
-    C.shareOpen || "", location.href.split("#")[0], "",
-    ...(R ? ["✨ *" + (C.shareMain || R.label) + "* — " + dl(R.date) + ", " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
-    ...(bar ? ["🐎 *" + bar.name + "* — " + dl(bar.date) + (bar.time ? ", " + bar.time : ""), "📍 " + V.name + ", " + V.address, ""] : []),
-    C.shareLine || "", "— " + H.familyName + ", " + H.place
+    "💛 *शुभ विवाह* — *" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "*", "",
+    ...(R ? ["✨ *" + (C.shareMain || R.label) + "*", "📅 " + dl(R.date) + " · " + R.time, "📍 " + R.name + ", " + R.address, ""] : []),
+    ...(bar ? ["🐎 बारात: " + dl(bar.date) + (bar.time ? " · " + bar.time : ""), ""] : []),
+    C.shareLine || "", "",
+    C.shareOpen || "", location.href.split("#")[0]
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 

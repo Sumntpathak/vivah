@@ -39,11 +39,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .intro .i-names{font-size:clamp(30px,8.5vw,54px);font-weight:700;line-height:1.1}
 .intro .i-names em{font-style:normal;font-weight:300;font-size:.55em;margin:0 .35em;opacity:.8}
 .intro .i-date{font-size:14px;font-weight:300;letter-spacing:.04em;opacity:.85}
-.i-card{width:min(86vw,340px);display:grid;gap:6px}
-.i-row{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;text-align:left;margin:0;padding:10px 14px;border-radius:14px;color:var(--y-pale);font-size:13.5px;line-height:1.35}
-.i-row b{font-size:17px;font-weight:700;color:var(--y);white-space:nowrap}
-.i-row.main{background:var(--y);color:var(--ink);font-weight:500}
-.i-row.main b{color:var(--ink)}
+.i-card{display:grid;gap:4px;justify-items:center}
+.i-row{display:grid;gap:2px;justify-items:center;text-align:center;margin:0;color:var(--y-pale);font-size:14px;line-height:1.4}
+.i-row b{font-size:32px;font-weight:700;color:var(--y);line-height:1.15}
 .i-btn{margin-top:4px;font:inherit;font-size:16px;font-weight:700;box-shadow:0 8px 28px rgba(255,203,47,.32);color:var(--ink);background:var(--y);border:0;border-radius:999px;padding:15px 38px;cursor:pointer;
   animation:nudge 2s var(--ease) infinite}
 @keyframes nudge{0%,100%{transform:none}50%{transform:translateY(-4px)}}
@@ -87,7 +85,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 
 /* ---------------- letter (patra order, centred) ---------------- */
 .letter{padding:15svh 0 12svh;text-align:center}
-.letter p,.p-txt,.f-title{text-wrap:balance}
+.letter p,.p-txt{text-wrap:balance}
 .letter .wrap{max-width:760px}
 .mantra-c{font-size:14px;font-weight:500}
 .shloka{margin-top:14px;font-size:14.5px;font-weight:300;line-height:1.9;color:var(--ink-soft)}
@@ -255,18 +253,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:90;opa
 .stepper{display:flex;align-items:center;gap:22px}
 .stepper button{width:52px;height:52px;border-radius:50%;border:0;background:rgba(42,11,5,.08);font:inherit;font-size:24px;color:var(--ink);cursor:pointer}
 .stepper output{font-size:44px;font-weight:300;min-width:1.4em;text-align:center;font-variant-numeric:tabular-nums}
-
-/* ---------------- footer ---------------- */
-.foot{padding:16svh 0 0;overflow:hidden}
-.f-title{font-size:clamp(30px,8vw,64px);font-weight:700;line-height:1.15;margin:14px 0 18px;max-width:14ch}
-.f-fam{font-size:18px;font-weight:500}
-.f-place{font-size:14px;font-weight:300;color:var(--ink-soft);margin-top:2px}
-.f-note{font-size:14px;font-weight:300;line-height:1.7;margin-top:22px;max-width:40ch}
-.f-links{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:28px}
-.f-links a{font-size:14px;font-weight:500;text-decoration:none;border-bottom:1.5px solid}
-.f-end{position:relative;margin-top:8svh;height:clamp(300px,82vw,640px)}
-.f-couple{position:absolute;left:50%;bottom:9vw;transform:translateX(-50%);height:88%;width:auto;z-index:1;filter:drop-shadow(0 20px 30px rgba(120,55,0,.3))}
-.f-big{position:absolute;left:50%;bottom:-.2em;transform:translateX(-50%);z-index:2;font-size:clamp(66px,18.5vw,260px);font-weight:700;line-height:1;white-space:nowrap}
 
 /* ---------------- floating buttons ---------------- */
 .fab-rsvp{position:fixed;z-index:80;bottom:calc(env(safe-area-inset-bottom) + 16px);border:0;cursor:pointer;
