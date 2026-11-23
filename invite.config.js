@@ -104,7 +104,7 @@ window.INVITE = {
     kicker:  "मंगल परिणयोत्सव",
     sang:    "संग",
     gateBtn: "निमंत्रण खोलें",
-    gateLines: [{ d: "06 दिसम्बर", t: "मुख्य प्रीतिभोज · वाड्रफनगर", main: true }, { d: "09 दिसम्बर", t: "बारात एवं शुभ विवाह · रीवा" }],
+    gateLines: [{ d: "06 दिसम्बर", t: "मुख्य प्रीतिभोज · वाड्रफनगर", main: true }],
     mqWeds: "weds", mqTail: "9 December Wedding",      // running line: सुमन्त weds निकिता · 9 December Wedding
     shareMain: "मुख्य प्रीतिभोज",
     shareIntro: "हमारे यहाँ मंगल परिणयोत्सव (शुभ विवाह) का आयोजन है। आप सपरिवार पधारकर नव दम्पति को अपना स्नेहिल आशीर्वाद प्रदान करें।",
