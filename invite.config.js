@@ -110,6 +110,8 @@ window.INVITE = {
     gateLines: [{ d: "06 दिसम्बर", t: "मुख्य प्रीतिभोज · वाड्रफनगर", main: true }],
     mqWeds: "weds", mqTail: "9 December Wedding",      // running line: सुमन्त weds निकिता · 9 December Wedding
     shareOpen: "निमंत्रण पत्रिका:",
+    shareKe: "के मंगल परिणयोत्सव में आप सपरिवार सादर आमंत्रित हैं।",
+    shareMain: "मुख्य प्रीतिभोज", shareBar: "बारात एवं शुभ विवाह",
     ctaRsvp: "आगमन बताएँ",
     doha:    "विघ्न हरण मंगल करण, गौरी पुत्र गणेश।\nप्रथम निमंत्रण आपको, ब्रह्मा, विष्णु, महेश॥",
     navEvents: "कार्यक्रम", navVenue: "स्थल", navFamily: "परिजन", navRsvp: "आगमन",

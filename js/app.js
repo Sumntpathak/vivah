@@ -221,12 +221,13 @@
   const evOf = k => I.events.find(e => e.key === k), dl = d => { const p = dparts(d); return p.d + " " + p.m + " " + p.y + ", " + p.wd; };
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
   const cd = d => { const p = dparts(d); return Number(p.d) + " " + p.m + " " + p.y + ", " + p.wd; };   // "6 दिसम्बर 2026, रविवार" as on the printed card
+  const cs = d => { const p = dparts(d); return Number(p.d) + " " + p.m + " " + p.y + ", " + p.wd; };
   const shareMsg = [
     "*" + C.mantra + "*", "",
-    C.salute, "हमारे यहाँ *" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "* " + C.ke, "",
+    C.salute, "*" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "* " + (C.shareKe || C.ke), "",
     C.shareOpen || "", location.href.split("#")[0], "",   // website sits in the invitation text; first link = WhatsApp card
-    ...(R ? ["*" + R.event + "*", cd(R.date) + " · " + R.time, ""] : []),
-    ...(bar && viv ? ["*" + bar.name + " एवं " + viv.name + "*", cd(bar.date)] : []),
+    ...(R ? ["*" + (C.shareMain || R.event) + "*: " + cs(R.date) + ", " + R.time] : []),
+    ...(bar && viv ? ["*" + (C.shareBar || bar.name) + "*: " + cs(bar.date)] : []),
     ...(I.balManuhar && I.balManuhar.line ? ["", "*" + C.balTitle + "*: " + I.balManuhar.line] : [])
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
