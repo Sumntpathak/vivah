@@ -26,8 +26,8 @@ Copy the folder, set `side: "bride"` in the config, and replace the family detai
 1. Unzip `vivah-groom.zip` on a computer.
 2. Open https://app.netlify.com/drop and drag the `vivah-groom` folder onto the page. You get a live link immediately.
 3. Sign up for free and click **Claim** within an hour, or the site is deleted.
-4. In Netlify: **Site configuration → Change site name** → `sumantwedsnikita`. The link becomes https://sumantwedsnikita.netlify.app
-5. If you pick a different name, replace `sumantwedsnikita.netlify.app` in the two `og:` lines in `index.html` and drop the folder again, so the WhatsApp preview image works.
+4. In Netlify: **Site configuration → Change site name** → `sumantwedsnikita`. The link becomes https://sumantwedsnikita.pages.dev
+5. If you pick a different name, replace `sumantwedsnikita.pages.dev` in the two `og:` lines in `index.html` and drop the folder again, so the WhatsApp preview image works.
 
 To update later, drag the folder onto the site's **Deploys** page.
 
