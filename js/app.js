@@ -30,7 +30,7 @@
       <div class="orb" aria-hidden="true"><span>ॐ</span></div>
       <p class="i-names">${esc(G.name)}<em>${esc(C.sang)}</em>${esc(B.name)}</p>
       <p class="i-date">${md.d} ${md.m} ${md.y} · ${md.wd}</p>
-      <button type="button" class="i-btn" id="openBtn">${esc(C.gateBtn)}</button>
+      <button type="button" class="i-btn" id="openBtn"><span>${esc(C.gateBtn)}</span>${(C.gateLines || []).map(l => `<small>${esc(l)}</small>`).join("")}</button>
     </div></div>`;
   }
 
