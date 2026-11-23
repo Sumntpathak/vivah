@@ -65,7 +65,8 @@ window.INVITE = {
     date: "2026-12-06", time: "सायं 7.00 बजे से",
     mapQuery: "B.N. Convent School, Wadrafnagar, Balrampur, Chhattisgarh",
     lat: null, lng: null,
-    calendar: { start: "2026-12-06T19:00:00+05:30", end: "2026-12-06T23:30:00+05:30" }
+    calendar: { start: "2026-12-06T19:00:00+05:30", end: "2026-12-06T23:30:00+05:30" },
+    mapPath: "gps6"            // short link in the WhatsApp text -> redirect in /_redirects
   },
 
   /* ---------- venue of the main function ---------- */
@@ -74,6 +75,7 @@ window.INVITE = {
     address: "रतहरा नहर के पास, रतहरा-रीवा (म.प्र.)",
     lat: 24.5456678, lng: 81.3456846,
     shortLink: "https://maps.app.goo.gl/SL1wtoMLqwsd2ABR7",
+    mapPath: "gps9",           // short link in the WhatsApp text -> redirect in /_redirects
     label: "शुभ विवाह", date: "2026-12-09", time: "रात्रि शुभ लग्न में",
     route: { label: "बारात प्रस्थान · दोपहर 11.00 बजे" }
   },
