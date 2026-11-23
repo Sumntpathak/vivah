@@ -222,12 +222,13 @@
   const R = I.reception, bar = evOf("baraat"), viv = evOf("vivah");
   const cd = d => { const p = dparts(d); return Number(p.d) + " " + p.m + " " + p.y + ", " + p.wd; };   // "6 दिसम्बर 2026, रविवार" as on the printed card
   const shareMsg = [
-    "🙏 *" + C.mantra + "* 🙏", "",
+    "*" + C.mantra + "*", "",
     C.salute, "हमारे यहाँ *" + G.prefix + " " + G.name + " " + C.sang + " " + B.prefix + " " + B.name + "* " + C.ke, "",
-    C.shareOpen || "", location.href.split("#")[0], "",   // website sits right in the invitation text; first link = WhatsApp card
-    ...(R ? ["*" + R.event + "*", "📅 " + cd(R.date) + " · " + R.time, "📍 " + R.name + ", " + R.address.split(",")[0],
-             "🗺️ https://maps.google.com/?q=" + encodeURIComponent(R.mapQuery.split(",").slice(0, 2).map(s => s.trim()).join(" ")).replace(/%20/g, "+"), ""] : []),
-    ...(bar && viv ? ["*" + bar.name + " एवं " + viv.name + "*", "📅 " + cd(bar.date)] : [])
+    C.shareOpen || "", location.href.split("#")[0], "",   // website sits in the invitation text; first link = WhatsApp card
+    ...(R ? ["*" + R.event + "*", cd(R.date) + " · " + R.time, R.name + ", " + R.address.split(",")[0],
+             "नक्शा: https://maps.google.com/?q=" + encodeURIComponent(R.mapQuery.split(",").slice(0, 2).map(s => s.trim()).join(" ")).replace(/%20/g, "+"), ""] : []),
+    ...(bar && viv ? ["*" + bar.name + " एवं " + viv.name + "*", cd(bar.date), V.name + ", " + V.address.split(",").pop().trim(),
+             ...(V.shortLink ? ["नक्शा: " + V.shortLink] : [])] : [])
   ].join("\n");
   $("#shareBtn").href = "https://wa.me/?text=" + encodeURIComponent(shareMsg);
 
